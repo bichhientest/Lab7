@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./angular.min.js"></script>
+    <script src="./Prods.js"></script>
+    <script src="./bai2.js"></script>
+    <link rel="stylesheet" href="./bootstrap-5.3.2-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./bootstrap-5.3.2-dist/js/bootstrap.js">
+</head>
+<body ng-app="myapp">
+    <div class="container" ng-controller="myctrl">
+        <div class="row" style="margin-top: 80px; margin-left: 200px;">
+            <div class="col-sm-8">
+                .<div class="card">
+                    <div class="card-header">
+                        DANH SÁCH HÀNG HÓA
+                    </div>  
+                    <div >
+                        <table class="table table-bordered ">
+                        
+                            <tbody>
+                                <tr>
+                                <th >SẢN PHẨM</th>
+                                <th >ĐƠN GIÁ</th>
+                                <th >GIẢM GIÁ</th>
+                                <th >NGÀY  </th>
+                              </tr>
+                              <tr ng-repeat="prod in list_product| orderBy:'-price'|limitTo:8:16">
+                               <td>{{prod.name|uppercase}}</td>
+                                <td>{{prod.price|currency}}</td>
+                                <td>{{prod.discount|myfilter:2}}</td>
+                                <td>{{prod.date|date: "MMM-dd, yyyy"}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+            
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

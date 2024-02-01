@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./angular.min.js"></script>
+    <script src="./Prods.js"></script>
+    <script src="./bai4.js"></script>
+    <link rel="stylesheet" href="./bootstrap-5.3.2-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./bootstrap-5.3.2-dist/js/bootstrap.js">
+    <link rel="stylesheet" href="./fontawesome-free-6.5.1-web/css/fontawesome.css">
+    <link rel="stylesheet" href="./fontawesome-free-6.5.1-web/css/brands.min.css">
+    <link rel="stylesheet" href="./fontawesome-free-6.5.1-web/css/solid.css">
+    <link rel="stylesheet" href="./fontawesome-free-6.5.1-web/js/fontawesome.js">
+</head>
+<body ng-app="myapp">
+    <div class="container" ng-controller="myctrl">
+        <div class="row" style="margin-top: 80px; margin-left: 200px;">
+            <div class="col-sm-8">
+                .<div class="card">
+                    <div class="card-header">
+                        DANH SÁCH HÀNG HÓA
+                    </div>  
+                    <div >
+                        <table class="table table-bordered ">
+                        
+                            <tbody>
+                                <tr>
+                                <th><a href="#" ng-click="sortby('name')">SẢN PHẨM</a></th>
+                                <th><a href="#" ng-click="sortby('price')">ĐƠN GIÁ</a></th>
+                                <th><a href="#" ng-click="sortby('discount')">GIẢM GIÁ</a></th>
+                                <th><a href="#" ng-click="sortby('date')">NGÀY</a></th>
+                            
+                              </tr>
+                              <tr ng-repeat="prod in list_product | orderBy:prop | limitTo:8:begin">
+                               <td>{{prod.name|uppercase}}</td>
+                                <td>{{prod.price|currency}}</td>
+                                <td>{{prod.discount|myfilter:2}}</td>
+                                <td>{{prod.date|date: "MMM-dd, yyyy"}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                    <div class="card-footer" style="text-align: center;">
+                        <button ng-click="first()" type="button" class="btn btn-outline-dark"><i class="fa-solid fa-arrow-up"></i></button>
+                        <button ng-lick="next()" type="button" class="btn btn-outline-dark"><i class="fa-solid fa-arrow-left"></i></button>
+                        <button ng-lick="prev()" type="button" class="btn btn-outline-dark"><i class="fa-solid fa-arrow-right"></i></button>
+                        <button ng-click="last()" type="button" class="btn btn-outline-dark"><i class="fa-solid fa-arrow-down"></i></button>
+                    </div>  
+            
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
